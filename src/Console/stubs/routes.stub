@@ -1,0 +1,15 @@
+<?php
+
+use Illuminate\Routing\Router;
+
+Admin::registerAuthRoutes();
+
+Route::group([
+    'prefix'        => config('lia.route.prefix'),
+    'namespace'     => config('lia.route.namespace'),
+    'middleware'    => config('lia.route.middleware'),
+], function (Router $router) {
+
+    $router->get('/', 'HomeController@index');
+
+});

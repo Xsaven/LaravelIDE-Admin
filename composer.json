@@ -18,7 +18,10 @@
     "autoload": {
         "psr-4": {
             "Lia\\": "src/"
-        }
+        },
+        "files": [
+            "src/helpers.php"
+        ]
     },
     "prefer-stable": true,
     "extra": {
