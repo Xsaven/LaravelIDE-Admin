@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Routing\Router;
+use Lia\Facades\Admin;
 
 Admin::registerAuthRoutes();
 
