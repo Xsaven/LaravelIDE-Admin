@@ -3,7 +3,7 @@
     "description": "Laravel-IDE Admin Manager.",
     "keywords": ["laravel", "ide", "admin", "manager", "xsaven"],
     "license": "MIT",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "type": "project",
     "authors": [
         {
