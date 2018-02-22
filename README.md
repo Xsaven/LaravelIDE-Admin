@@ -58,7 +58,7 @@ class Handler extends ExceptionHandler
             Reporter::report($exception);
         }
 
-//        parent::report($exception);
+        //parent::report($exception);
     }
     
     ...
