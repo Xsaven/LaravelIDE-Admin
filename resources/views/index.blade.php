@@ -19,7 +19,7 @@
 <nav id="menuContainer" role="navigation"></nav>
 <div id="layoutContainer"></div>
 </body>
-<script src="{{asset('vendor/lia/build.js')}}" type="text/javascript"></script>
-{{--<script src="http://localhost:8081/build.js" type="text/javascript"></script>--}}
+{{--<script src="{{asset('vendor/lia/build.js')}}" type="text/javascript"></script>--}}
+<script src="http://localhost:8081/build.js" type="text/javascript"></script>
 {!! Admin::js() !!}
 </html>
