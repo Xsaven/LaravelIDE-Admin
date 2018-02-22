@@ -11,14 +11,14 @@ class UninstallCommand extends Command
      *
      * @var string
      */
-    protected $name = 'admin:uninstall';
+    protected $name = 'lia:uninstall';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Uninstall the admin package';
+    protected $description = 'Uninstall the LaraveIDE-admin package';
 
     /**
      * Execute the console command.
@@ -43,8 +43,8 @@ class UninstallCommand extends Command
      */
     protected function removeFilesAndDirectories()
     {
-        $this->laravel['files']->deleteDirectory(config('admin.directory'));
-        $this->laravel['files']->deleteDirectory(public_path('vendor/laravel-admin/'));
-        $this->laravel['files']->delete(config_path('admin.php'));
+        $this->laravel['files']->deleteDirectory(config('lia.directory'));
+        $this->laravel['files']->deleteDirectory(public_path('vendor/lia/'));
+        $this->laravel['files']->delete(config_path('lia.php'));
     }
 }

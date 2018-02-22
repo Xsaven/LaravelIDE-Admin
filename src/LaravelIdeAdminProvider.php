@@ -67,6 +67,7 @@ class LaravelIdeAdminProvider extends ServiceProvider
 
         //echo trans('lia::system.welcome');
         //echo config('lia.name');
+        //php artisan vendor:publish --provider="Lia\LaravelIdeAdminProvider"
     }
 
     /**
