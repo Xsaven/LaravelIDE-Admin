@@ -1,5 +1,5 @@
 <?php
-namespace App\Admin\Controllers\RemoteDataControllers;
+namespace Lia\Controllers\RemoteDataControllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;

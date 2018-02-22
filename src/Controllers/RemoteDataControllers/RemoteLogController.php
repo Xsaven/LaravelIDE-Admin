@@ -1,10 +1,10 @@
 <?php
-namespace App\Admin\Controllers\RemoteDataControllers;
+namespace Lia\Controllers\RemoteDataControllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Encore\Admin\Auth\Database\Administrator;
-use Encore\Admin\Auth\Database\OperationLog;
+use Lia\Auth\Database\Administrator;
+use Lia\Auth\Database\OperationLog;
 
 class RemoteLogController extends Controller{
 

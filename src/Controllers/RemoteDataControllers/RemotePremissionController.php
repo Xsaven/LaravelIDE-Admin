@@ -1,9 +1,9 @@
 <?php
-namespace App\Admin\Controllers\RemoteDataControllers;
+namespace Lia\Controllers\RemoteDataControllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Encore\Admin\Auth\Database\Permission;
+use Lia\Auth\Database\Permission;
 
 class RemotePremissionController extends Controller{
 

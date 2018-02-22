@@ -65,8 +65,6 @@ class LaravelIdeAdminProvider extends ServiceProvider
             $this->publishes([__DIR__.'/../database/migrations' => database_path('migrations')], 'lia-migrations');
             $this->publishes([__DIR__.'/../resources/assets' => public_path('vendor')], 'lia-assets');
         }
-
-        \Lia\Addons\Reporter\Reporter::report();
     }
 
     /**
