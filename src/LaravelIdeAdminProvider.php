@@ -3,6 +3,7 @@
 namespace Lia;
 
 use Illuminate\Support\ServiceProvider;
+use Lia\Addons\Reporter\Reporter;
 
 class LaravelIdeAdminProvider extends ServiceProvider
 {
@@ -65,9 +66,7 @@ class LaravelIdeAdminProvider extends ServiceProvider
             $this->publishes([__DIR__.'/../resources/assets' => public_path('vendor')], 'lia-assets');
         }
 
-        //echo trans('lia::system.welcome');
-        //echo config('lia.name');
-        //php artisan vendor:publish --provider="Lia\LaravelIdeAdminProvider"
+        \Lia\Addons\Reporter\Reporter::report();
     }
 
     /**

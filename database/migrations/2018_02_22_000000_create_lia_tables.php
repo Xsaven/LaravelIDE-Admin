@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateAdminTables extends Migration
+class CreateLiaTables extends Migration
 {
     /**
      * Run the migrations.
@@ -91,6 +91,24 @@ class CreateAdminTables extends Migration
             $table->index('user_id');
             $table->timestamps();
         });
+
+        Schema::connection($connection)->create(config('lia.database.reporter_table'), function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('type');
+            $table->string('code');
+            $table->string('message');
+            $table->string('file');
+            $table->integer('line');
+            $table->text('trace');
+            $table->string('method');
+            $table->string('path');
+            $table->text('query');
+            $table->text('body');
+            $table->text('cookies');
+            $table->text('headers');
+            $table->string('ip');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -111,5 +129,6 @@ class CreateAdminTables extends Migration
         Schema::connection($connection)->dropIfExists(config('lia.database.role_permissions_table'));
         Schema::connection($connection)->dropIfExists(config('lia.database.role_menu_table'));
         Schema::connection($connection)->dropIfExists(config('lia.database.operation_log_table'));
+        Schema::connection($connection)->dropIfExists(config('lia.database.reporter_table'));
     }
 }

@@ -1,3 +1,3 @@
 $ cat .gitignore
 
-/resources/assets/lia/src
+/resources/src-admin

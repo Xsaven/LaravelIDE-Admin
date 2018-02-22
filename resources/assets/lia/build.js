@@ -21169,7 +21169,7 @@ function isUndefined(arg) {
 /* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function($, CStore) {const Route = function(name=false, agrs={}){
+/* WEBPACK VAR INJECTION */(function($, CStore) {window.Route = function(name=false, agrs={}){
     if(routList[name]==undefined) return routList;
     var routeReturn = routList[name];
     var getVars = "";
@@ -21181,7 +21181,7 @@ function isUndefined(arg) {
     });
     return routeReturn+(getVars!='' ? '?'+getVars : '');
 };
-const Remote = function(name, method='get'){
+window.Remote = function(name, method='get'){
     return Route('remote.'+method, {name: name});
 };
 

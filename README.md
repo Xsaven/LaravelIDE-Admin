@@ -33,6 +33,38 @@ Open `http://localhost/admin/` in browser,use username `admin` and password `adm
 Configurations
 ------------
 The file `config/lie.php` contains an array of configurations, you can find the default configurations in there.
+
+Exception reporter
+------------
+Open `app/Exceptions/Handler.php`, call `Reporter::report()` inside `report` method:
+```php
+<?php
+
+namespace App\Exceptions;
+
+use Lia\Addons\Reporter\Reporter;
+use Exception;
+use Illuminate\Auth\AuthenticationException;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+
+class Handler extends ExceptionHandler
+{
+    ...
+
+    public function report(Exception $exception)
+    {
+        if ($this->shouldReport($exception)) {
+            Reporter::report($exception);
+        }
+
+//        parent::report($exception);
+    }
+    
+    ...
+
+}
+```
  
 
 Other

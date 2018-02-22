@@ -18,7 +18,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Lia\\": "src/"
+            "Lia\\": "src/",
+            "Help\\": "src/Helpers/"
         },
         "files": [
             "src/helpers.php"
@@ -29,7 +30,10 @@
         "laravel": {
             "providers": [
                 "Lia\\LaravelIdeAdminProvider"
-            ]
+            ],
+            "aliases": {
+                "Admin": "Lia\\Facades\\Admin"
+            }
         }
     }
 }

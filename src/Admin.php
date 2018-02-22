@@ -67,10 +67,6 @@ class Admin
             return;
         }
 
-        $css = array_get(Form::collectFieldAssets(), 'css', []);
-
-        static::$css = array_merge(static::$css, $css);
-
         return view('lia::partials.css', ['css' => array_unique(static::$css)]);
     }
 
@@ -88,10 +84,6 @@ class Admin
 
             return;
         }
-
-        $js = array_get(Form::collectFieldAssets(), 'js', []);
-
-        static::$js = array_merge(static::$js, $js);
 
         return view('lia::partials.js', ['js' => array_unique(static::$js)]);
     }
@@ -150,6 +142,15 @@ class Admin
             $router->post('auth/login', 'AuthController@postLogin');
             $router->get('auth/logout', 'AuthController@getLogout');
             $router->get('/', 'LiaController@index');
+
+            $router->group(['prefix' => 'remote', 'as' => 'remote.'], function () {
+                Route::match(['get'], '/get/{name}', 'RemoteDataControler@get')->name('get');
+                Route::match(['get'], '/select/{name}', 'RemoteDataControler@select')->name('select');
+                Route::match(['post'], '/insert/{name}', 'RemoteDataControler@insert')->name('insert');
+                Route::match(['post'], '/update/{name}', 'RemoteDataControler@update')->name('update');
+                Route::match(['delete'], '/delete/{name}', 'RemoteDataControler@delete')->name('delete');
+            });
+
         });
     }
 
