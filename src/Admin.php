@@ -151,6 +151,19 @@ class Admin
                 Route::match(['delete'], '/delete/{name}', 'RemoteDataControler@delete')->name('delete');
             });
 
+            $router->group(['prefix' => 'filemanager', 'as' => 'fmanager.'], function () {
+                Route::match(['get'], '/', 'FilemanagerController@index')->name('index');
+                Route::match(['post'], '/branch', 'FilemanagerController@branch')->name('branch');
+                Route::match(['post'], '/search', 'FilemanagerController@search')->name('search');
+                Route::match(['post'], '/upload', 'FilemanagerController@upload')->name('upload');
+                Route::match(['post'], '/download', 'FilemanagerController@download')->name('download');
+                Route::match(['post'], '/copy', 'FilemanagerController@copy')->name('copy');
+                Route::match(['post'], '/move', 'FilemanagerController@move')->name('move');
+                Route::match(['post'], '/remove', 'FilemanagerController@remove')->name('remove');
+                Route::match(['post'], '/rename', 'FilemanagerController@rename')->name('rename');
+                Route::match(['post'], '/create', 'FilemanagerController@create')->name('create');
+            });
+
         });
     }
 
