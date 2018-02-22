@@ -149,6 +149,7 @@ class Admin
             $router->get('auth/login', 'AuthController@getLogin');
             $router->post('auth/login', 'AuthController@postLogin');
             $router->get('auth/logout', 'AuthController@getLogout');
+            $router->get('/', 'LiaController@index');
         });
     }
 
