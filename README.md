@@ -21,7 +21,7 @@ Then run these commands to publish assets and config：
 ```
 php artisan vendor:publish --provider="Lia\LaravelIdeAdminProvider"
 ```
-After run command you can find config file in `config/lie.php`, in this file you can change the install directory,db connection or table names.
+After run command you can find config file in `config/lia.php`, in this file you can change the install directory,db connection or table names.
 
 At last run following command to finish install. 
 ```
@@ -32,7 +32,7 @@ Open `http://localhost/admin/` in browser,use username `admin` and password `adm
 
 Configurations
 ------------
-The file `config/lie.php` contains an array of configurations, you can find the default configurations in there.
+The file `config/lia.php` contains an array of configurations, you can find the default configurations in there.
 
 Exception reporter
 ------------
