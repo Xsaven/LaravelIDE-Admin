@@ -25,7 +25,7 @@ After run command you can find config file in `config/lie.php`, in this file you
 
 At last run following command to finish install. 
 ```
-php artisan lie:install
+php artisan lia:install
 ```
 
 Open `http://localhost/admin/` in browser,use username `admin` and password `admin` to login.
