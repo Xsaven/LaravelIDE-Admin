@@ -4,6 +4,8 @@ namespace Lia;
 
 use Illuminate\Support\ServiceProvider;
 use Lia\Addons\Reporter\Reporter;
+use Lia\Addons\Terminal\Kernel;
+use Lia\Addons\Terminal\Application as TerminalApplication;
 
 class LaravelIdeAdminProvider extends ServiceProvider
 {
@@ -79,6 +81,27 @@ class LaravelIdeAdminProvider extends ServiceProvider
         $this->registerRouteMiddleware();
 
         $this->commands($this->commands);
+
+        $this->mergeConfigFrom(__DIR__.'/../config/terminal.php', 'terminal');
+
+        $this->app->singleton(TerminalApplication::class, function ($app) {
+            $config = $app['config']['terminal'];
+            $artisan = new TerminalApplication($app, $app['events'], $app->version());
+            $artisan->resolveCommands($config['commands']);
+
+            return $artisan;
+        });
+
+        $this->app->singleton(Kernel::class, function ($app) {
+            $config = $app['config']['terminal'];
+
+            return new Kernel($app[TerminalApplication::class], array_merge($config, [
+                'basePath' => $app->basePath(),
+                'environment' => $app->environment(),
+                'version' => $app->version(),
+                'endpoint' => $app['url']->route('terminal.endpoint'),
+            ]));
+        });
     }
 
     /**

@@ -164,6 +164,12 @@ class Admin
                 Route::match(['post'], '/create', 'FilemanagerController@create')->name('create');
             });
 
+            $router->group(['prefix' => 'terminal', 'as' => 'terminal.'], function(){
+                Route::get('/', 'TerminalController@index')->name('index');
+                Route::get('/media/{file}', 'TerminalController@media')->where(['file' => '.+'])->name('media');
+                Route::post('/endpoint', 'TerminalController@endpoint')->name('endpoint');
+            });
+
         });
     }
 

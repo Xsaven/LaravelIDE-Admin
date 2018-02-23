@@ -1,4 +1,4 @@
-<p align="center"><h1>Laravel-IDE Admin Manager.</h1></p>
+<p align="center"><h1>Laravel-IDE Admin.</h1></p>
 
 Requirements
 ------------
@@ -69,12 +69,14 @@ class Handler extends ExceptionHandler
 
 Other
 ------------
-`LaravelIDE-Admin` based on following plugins or services:
+`Laravel-IDE Admin` based on following plugins or services:
 
 + [Laravel](https://laravel.com/)
 + [Webix](https://webix.com/)
++ [GoldenLayout](http://golden-layout.com/)
++ [Laravel Web Artisan](https://github.com/recca0120/laravel-terminal)
 + [font-awesome](http://fontawesome.io)
 
 License
 ------------
-`LaravelIDE-Admin` is licensed under [The MIT License (MIT)](LICENSE).
+`Laravel-IDE Admin` is licensed under [The MIT License (MIT)](LICENSE).
