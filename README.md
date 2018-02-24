@@ -65,7 +65,18 @@ class Handler extends ExceptionHandler
 
 }
 ```
- 
+
+File system
+------------ 
+Add the disk in you `config/filesystem.php` file:
+```
+'admin' => [
+    'driver' => 'local',
+    'root' => public_path('uploads'),
+    'visibility' => 'public',
+    'url' => env('APP_URL').'/uploads',
+],
+```
 
 Other
 ------------

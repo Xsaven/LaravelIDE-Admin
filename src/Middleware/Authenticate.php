@@ -21,6 +21,9 @@ class Authenticate
             return redirect()->guest(admin_base_path('auth/login'));
         }
 
+        if(config('filesystems.disks.admin'))
+            config(['filesystems.default' => config('lia.upload.disk')]);
+
         return $next($request);
     }
 
