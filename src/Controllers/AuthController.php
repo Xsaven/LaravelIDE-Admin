@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
+use Lia\Facades\Admin;
 
 class AuthController extends Controller
 {
@@ -21,6 +22,14 @@ class AuthController extends Controller
         if (!Auth::guard('admin')->guest()) {
             return redirect(config('lia.route.prefix'));
         }
+
+        Admin::css(asset('vendor/lia/css/webix/contrast.css'));
+        Admin::css(asset('vendor/lia/css/bootstrap/css/bootstrap.min.css'));
+        Admin::css(asset('vendor/lia/css/layout.css'));
+        Admin::css(asset('vendor/lia/css/AdminLTE.min.css'));
+        Admin::css(asset('vendor/lia/css/goldenlayout/goldenlayout-base.css'));
+        Admin::css(asset('vendor/lia/css/goldenlayout/goldenlayout-dark-theme.css'));
+        Admin::js('http://cdn.webix.com/edge/webix.js');
 
         return view('lia::login');
     }
@@ -43,12 +52,10 @@ class AuthController extends Controller
         }
 
         if (Auth::guard('admin')->attempt($credentials)) {
-            admin_toastr(trans('lia.login_successful'));
-
-            return redirect()->intended(config('lia.route.prefix'));
+            return response(['redirect' => config('lia.route.prefix')], 200);
         }
 
-        return Redirect::back()->withInput()->withErrors(['username' => $this->getFailedLoginMessage()]);
+        return response(['username' => $this->getFailedLoginMessage()], 401);
     }
 
     /**
