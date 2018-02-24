@@ -1,0 +1,89 @@
+html{
+    overflow: hidden;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: black;
+}
+
+#layoutContainer{
+    position: absolute;
+    top: 34px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+}
+
+.container-cog {
+    width: 10px;
+    height: 10px;
+    float: left;
+    margin: 0px 5px 0 0;
+    cursor: pointer;
+    color: #6f6f6f;
+}
+
+.container-cog:hover {
+    color: white;
+}
+
+select {
+    background-color: #565757;
+}
+
+.pagination>.disabled>a, .pagination>.disabled>a:focus, .pagination>.disabled>a:hover, .pagination>.disabled>span, .pagination>.disabled>span:focus, .pagination>.disabled>span:hover {
+    color: #777;
+    cursor: not-allowed;
+    background-color: #565757;
+    border-color: #ddd;
+    color: white;
+}
+
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+    z-index: 2;
+    color: #fff;
+    cursor: default;
+    background-color: #3a3a3a;
+    border-color: #fff;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #3a3a3a;
+}
+.dropdown-menu {
+    background-color: #3a3a3a;
+}
+.lm_content, .box-header h3 {
+    color: white;
+}
+
+.dd-handle {
+    color: #fff;
+    background: #222;
+}
+
+.dd-handle:hover {
+    color: #fff;
+    background: #444;
+}
+
+.iconpicker .iconpicker-item{
+    color: black;
+}
+
+[view_id="menuContainer"] {
+    background: #333;
+}
+
+.fa-m10 {
+    margin-right: 10px;
+}
+
+.minimazedModalMenu{
+    float: right;
+    margin-right: 10px;
+    cursor: pointer;
+}

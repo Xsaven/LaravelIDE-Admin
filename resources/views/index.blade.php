@@ -7,13 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ Admin::title() }}</title>
     {!! Admin::css() !!}
-    <script>
-        function LA() {}
-        LA.token = "{{ csrf_token() }}";
-                @php $routeCollection = Route::getRoutes(); $routes = []; foreach ($routeCollection as $value) { if(!empty($value->getName())) $routes[$value->getName()] = str_replace('?','',$value->uri()); } @endphp
-        var routList = {!! json_encode($routes) !!};
-        window.adminPrefix = '{{config('lia.route.prefix')}}';
-    </script>
+    {!! Admin::script() !!}
 </head>
 <body>
 <nav id="menuContainer" role="navigation"></nav>
