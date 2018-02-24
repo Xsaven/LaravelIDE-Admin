@@ -68,7 +68,7 @@ class Handler extends ExceptionHandler
 
 File system
 ------------ 
-Add the disk in you `config/filesystem.php` file:
+Add the disk in you `config/filesystems.php` file:
 ```
 'admin' => [
     'driver' => 'local',

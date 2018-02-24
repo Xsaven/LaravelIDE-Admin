@@ -71,7 +71,7 @@ class AdminTablesSeeder extends Seeder
         // add default menus.
         Menu::truncate();
         Menu::insert([
-            [
+            /*[
                 'id' => 1,
                 'parent_id' => 0,
                 'order' => 0,
@@ -80,7 +80,7 @@ class AdminTablesSeeder extends Seeder
                 'uri' => 'task_manager',
                 'type' => 'webix',
                 'hotkey' => 'Alt+T',
-            ],
+            ],*/
             [
                 'id' => 2,
                 'parent_id' => 0,

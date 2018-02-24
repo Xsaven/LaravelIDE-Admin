@@ -12,6 +12,7 @@ class HomeController extends Controller
         $routeCollection = \Route::getRoutes(); $routes = []; foreach ($routeCollection as $value) { if(!empty($value->getName())) $routes[$value->getName()] = str_replace('?','',$value->uri()); }
         $routes = json_encode($routes);
         $prefix = config('lia.route.prefix');
+        $admin = json_encode(Admin::user()->toArray());
         $csrf_token = csrf_token();
 
         Admin::css(asset('vendor/lia/css/nprogress/nprogress.css'));
@@ -30,6 +31,7 @@ class HomeController extends Controller
         LA.token = "{$csrf_token}";
         var routList = {$routes};
         window.adminPrefix = '{$prefix}';
+        window.admin = {$admin};
 EOT;
 
         Admin::script($script);
