@@ -28,5 +28,7 @@ return [
         \Lia\Addons\Terminal\Console\Commands\Mysql::class,
         \Lia\Addons\Terminal\Console\Commands\Tail::class,
         \Lia\Addons\Terminal\Console\Commands\Vi::class,
+        \Lia\Addons\Terminal\Console\Commands\LS::class,
+        \Lia\Addons\Terminal\Console\Commands\CD::class,
     ],
 ];
