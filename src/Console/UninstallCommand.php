@@ -46,5 +46,6 @@ class UninstallCommand extends Command
         $this->laravel['files']->deleteDirectory(config('lia.directory'));
         $this->laravel['files']->deleteDirectory(public_path('vendor/lia/'));
         $this->laravel['files']->delete(config_path('lia.php'));
+        $this->laravel['files']->delete(config_path('terminal.php'));
     }
 }
