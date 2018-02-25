@@ -14,7 +14,7 @@ Installation
 First, install laravel 5.5, and make sure that the database connection settings are correct.
 
 ```
-composer require encore/laravel-ide-admin
+composer require xsaven/laravel-ide-admin
 ```
 
 Then run these commands to publish assets and config：
