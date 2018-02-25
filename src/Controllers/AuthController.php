@@ -52,6 +52,7 @@ class AuthController extends Controller
         }
 
         if (Auth::guard('admin')->attempt($credentials)) {
+            session(['cd_base_path' => base_path()]);
             return response(['redirect' => config('lia.route.prefix')], 200);
         }
 

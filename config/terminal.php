@@ -7,6 +7,7 @@ return [
         'mysql' => 'mysql',
         'artisan tinker' => 'tinker',
         'tinker' => 'tinker',
+        'js' => 'js'
     ],
     'confirmToProceed' => [
         'artisan' => [

@@ -52,7 +52,7 @@ class Vi extends Command implements WebCommand
     {
         $path = $this->argument('path');
         $text = $this->option('text');
-        $root = function_exists('base_path') === true ? base_path() : getcwd();
+        $root = session('cd_base_path');
         $path = trim($root, '/').'/'.$path;
 
         if (is_null($text) === false) {
