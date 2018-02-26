@@ -78,6 +78,20 @@ Add the disk in you `config/filesystems.php` file:
 ],
 ```
 
+Detect missing translations
+------------
+
+Most translations can be found by using the Find command (see above), but in case you have dynamic keys (variables/automatic forms etc), it can be helpful to 'listen' to the missing translations.
+To detect missing translations, we can swap the Laravel TranslationServiceProvider with a custom provider.
+In your config/app.php, comment out the original TranslationServiceProvider and add the one from this package:
+
+    //'Illuminate\Translation\TranslationServiceProvider',
+    'Lia\Addons\TranslationManager\TranslationServiceProvider',
+
+This will extend the Translator and will create a new database entry, whenever a key is not found, so you have to visit the pages that use them.
+This way it shows up in the webinterface and can be edited and later exported.
+You shouldn't use this in production, just in development to translate your views, then just switch back.
+
 Other
 ------------
 `Laravel-IDE Admin` based on following plugins or services:
@@ -87,6 +101,7 @@ Other
 + [GoldenLayout](http://golden-layout.com/)
 + [Laravel Web Artisan](https://github.com/recca0120/laravel-terminal)
 + [font-awesome](http://fontawesome.io)
++ [Laravel 5 Translation Manager](https://github.com/barryvdh/laravel-translation-manager)
 
 License
 ------------

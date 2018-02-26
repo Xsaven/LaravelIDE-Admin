@@ -102,7 +102,8 @@ return [
         'role_permissions_table' => 'admin_role_permissions',
         'role_menu_table'        => 'admin_role_menu',
         'role_menu_table'        => 'admin_role_menu',
-        'reporter_table'         => 'laravel_exceptions'
+        'reporter_table'         => 'laravel_exceptions',
+        'translate_manager'      => 'translations',
     ],
 
     /*
@@ -129,4 +130,32 @@ return [
     'extensions' => [
 
     ],
+
+    'translate_manager' => [
+        /**
+         * Enable deletion of translations
+         *
+         * @type boolean
+         */
+        'delete_enabled' => true,
+        /**
+         * Exclude specific groups from Laravel Translation Manager.
+         * This is useful if, for example, you want to avoid editing the official Laravel language files.
+         *
+         * @type array
+         *
+         * 	array(
+         *		'pagination',
+         *		'reminders',
+         *		'validation',
+         *	)
+         */
+        'exclude_groups' => [],
+
+        /**
+         * Export translations with keys output alphabetically.
+         */
+        'sort_keys ' => false,
+    ]
+
 ];

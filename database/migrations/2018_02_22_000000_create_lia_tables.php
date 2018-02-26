@@ -109,6 +109,16 @@ class CreateLiaTables extends Migration
             $table->string('ip');
             $table->timestamps();
         });
+        Schema::connection($connection)->create(config('lia.database.translate_manager'), function(Blueprint $table)
+        {
+            $table->increments('id');
+            $table->integer('status')->default(0);
+            $table->string('locale');
+            $table->string('group');
+            $table->string('key');
+            $table->text('value')->nullable();
+            $table->timestamps();
+        });
     }
 
     /**
@@ -130,5 +140,6 @@ class CreateLiaTables extends Migration
         Schema::connection($connection)->dropIfExists(config('lia.database.role_menu_table'));
         Schema::connection($connection)->dropIfExists(config('lia.database.operation_log_table'));
         Schema::connection($connection)->dropIfExists(config('lia.database.reporter_table'));
+        Schema::connection($connection)->dropIfExists(config('lia.database.translate_manager'));
     }
 }
