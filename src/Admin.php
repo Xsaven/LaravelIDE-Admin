@@ -124,6 +124,29 @@ class Admin
         return Auth::guard('admin')->user();
     }
 
+    public function adminVariables(){
+        $routeCollection = \Route::getRoutes(); $routes = []; foreach ($routeCollection as $value) { if(!empty($value->getName())) $routes[$value->getName()] = str_replace('?','',$value->uri()); }
+        $routes = json_encode($routes);
+        $prefix = config('lia.route.prefix');
+        $admin = json_encode($this->user()->toArray());
+        $csrf_token = csrf_token();
+        $adminLang = json_encode(trans('admin'));
+        $adminCfg = json_encode(config('lia'));
+
+        $script = <<<EOT
+                
+        function LA() {}
+        LA.token = "{$csrf_token}";
+        var routList = {$routes};
+        window.admin = {$admin};
+        window.__ = {$adminLang};
+        window.cfg = {$adminCfg};
+        window.adminPrefix = '{$prefix}';
+EOT;
+
+        $this->script($script);
+    }
+
     /**
      * Register the auth routes.
      *
@@ -138,10 +161,10 @@ class Admin
         ];
 
         Route::group($attributes, function ($router) {
-            $router->get('auth/login', 'AuthController@getLogin');
-            $router->post('auth/login', 'AuthController@postLogin');
-            $router->get('auth/logout', 'AuthController@getLogout');
-            $router->get('/', 'LiaController@index');
+            $router->get('/', 'LiaController@index')->name('admin.index');
+            $router->get('auth/login', 'AuthController@getLogin')->name('admin.login.index');
+            $router->post('auth/login', 'AuthController@postLogin')->name('admin.login.post');
+            $router->get('auth/logout', 'AuthController@getLogout')->name('admin.login.logout');
 
             $router->group(['prefix' => 'remote', 'as' => 'remote.'], function () {
                 Route::match(['get'], '/get/{name}', 'RemoteDataControler@get')->name('get');

@@ -9,12 +9,6 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $routeCollection = \Route::getRoutes(); $routes = []; foreach ($routeCollection as $value) { if(!empty($value->getName())) $routes[$value->getName()] = str_replace('?','',$value->uri()); }
-        $routes = json_encode($routes);
-        $prefix = config('lia.route.prefix');
-        $admin = json_encode(Admin::user()->toArray());
-        $csrf_token = csrf_token();
-
         Admin::css(asset('vendor/lia/css/nprogress/nprogress.css'));
         Admin::css(asset('vendor/lia/css/terminal/terminal.css'));
         Admin::css(asset('vendor/lia/css/filemanager/filemanager.css'));
@@ -24,17 +18,7 @@ class HomeController extends Controller
         Admin::css(asset('vendor/lia/css/AdminLTE.min.css'));
         Admin::css(asset('vendor/lia/css/goldenlayout/goldenlayout-base.css'));
         Admin::css(asset('vendor/lia/css/goldenlayout/goldenlayout-dark-theme.css'));
-
-        $script = <<<EOT
-
-        function LA() {}
-        LA.token = "{$csrf_token}";
-        var routList = {$routes};
-        window.adminPrefix = '{$prefix}';
-        window.admin = {$admin};
-EOT;
-
-        Admin::script($script);
+        Admin::adminVariables();
         Admin::js(asset('vendor/lia/lia.js'));
         return view('lia::index');
     }
