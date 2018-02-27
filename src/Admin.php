@@ -135,6 +135,7 @@ class Admin
         $adminCfg = json_encode(config('lia'));
         $locales = array_values(array_unique(array_merge([config('app.locale')], Translation::groupBy('locale')->pluck('locale')->toArray())));
         $locales = json_encode($locales);
+        $defaultLocale = config('app.locale');
 
         $script = <<<EOT
                 
@@ -146,6 +147,7 @@ class Admin
         window.cfg = {$adminCfg};
         window.adminPrefix = '{$prefix}';
         window.locales = '{$locales}';
+        window.defaultLocale = '{$defaultLocale}';
 EOT;
 
         $this->script($script);
