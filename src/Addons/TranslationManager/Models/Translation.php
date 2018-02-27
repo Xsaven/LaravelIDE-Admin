@@ -22,11 +22,9 @@ class Translation extends Model{
     const STATUS_SAVED = 0;
     const STATUS_CHANGED = 1;
 
-    protected $table = 'translations';
-
     protected $guarded = array('id', 'created_at', 'updated_at');
 
-    /*public function __construct(array $attributes = [])
+    public function __construct(array $attributes = [])
     {
         $connection = config('lia.database.connection') ?: config('database.default');
 
@@ -35,7 +33,7 @@ class Translation extends Model{
         $this->setTable(config('lia.database.translate_manager'));
 
         parent::__construct($attributes);
-    }*/
+    }
 
     public function scopeOfTranslatedGroup($query, $group)
     {

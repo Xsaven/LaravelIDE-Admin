@@ -100,8 +100,8 @@ Other
 + [Webix](https://webix.com/)
 + [GoldenLayout](http://golden-layout.com/)
 + [Laravel Web Artisan](https://github.com/recca0120/laravel-terminal)
-+ [font-awesome](http://fontawesome.io)
 + [Laravel 5 Translation Manager](https://github.com/barryvdh/laravel-translation-manager)
++ [Google Translate PHP](https://github.com/Stichoza/google-translate-php)
 
 License
 ------------

@@ -9,7 +9,7 @@ use Illuminate\Support\Collection;
 
 class Controller extends BaseController
 {
-    /** @var \Barryvdh\TranslationManager\Manager  */
+    /** @var \Lia\Addons\TranslationManager\Manager  */
     protected $manager;
 
     public function __construct(Manager $manager)

@@ -127,6 +127,7 @@ class Manager{
     public function findTranslations($path = null)
     {
         $path = $path ?: base_path();
+
         $groupKeys = array();
         $stringKeys = array();
         $functions =  array('trans', 'trans_choice', 'Lang::get', 'Lang::choice', 'Lang::trans', 'Lang::transChoice', '@lang', '@choice', '__');
@@ -177,6 +178,7 @@ class Manager{
                 }
             }
         }
+
         // Remove duplicates
         $groupKeys = array_unique($groupKeys);
         $stringKeys = array_unique($stringKeys);

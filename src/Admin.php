@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Route;
 use InvalidArgumentException;
+use Lia\Addons\TranslationManager\Models\Translation;
 
 /**
  * Class Admin.
@@ -132,6 +133,8 @@ class Admin
         $csrf_token = csrf_token();
         $adminLang = json_encode(trans('admin'));
         $adminCfg = json_encode(config('lia'));
+        $locales = array_values(array_unique(array_merge([config('app.locale')], Translation::groupBy('locale')->pluck('locale')->toArray())));
+        $locales = json_encode($locales);
 
         $script = <<<EOT
                 
@@ -142,6 +145,7 @@ class Admin
         window.__ = {$adminLang};
         window.cfg = {$adminCfg};
         window.adminPrefix = '{$prefix}';
+        window.locales = '{$locales}';
 EOT;
 
         $this->script($script);
