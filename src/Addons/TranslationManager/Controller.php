@@ -48,7 +48,6 @@ class Controller extends BaseController
             'group' => $group,
             'numTranslations' => $numTranslations,
             'numChanged' => $numChanged,
-            'editUrl' => route('trans.postEdit', [$group]),
             'deleteEnabled' => $this->manager->getConfig('delete_enabled')
         ];
 
@@ -74,10 +73,10 @@ class Controller extends BaseController
 
     public function postAdd($group = null)
     {
-        $keys = explode("\n", request()->get('keys'));
+        $keys = explode(";", request()->get('keys'));
 
         foreach($keys as $key){
-            $key = trim($key);
+            $key = str_slug(trim($key), '_');
             if($group && $key){
                 $this->manager->missingKey('*', $group, $key);
             }
@@ -145,7 +144,7 @@ class Controller extends BaseController
         $group = str_replace(".", '', $request->input('new-group'));
         if ($group)
         {
-            return redirect()->action('\Barryvdh\TranslationManager\Controller@getView',$group);
+            return response(['status' => 'ok']);
         }
         else
         {
@@ -166,9 +165,9 @@ class Controller extends BaseController
 
     public function postRemoveLocale(Request $request)
     {
-        foreach ($request->input('remove-locale', []) as $locale => $val) {
-            $this->manager->removeLocale($locale);
-        }
-        return redirect()->back();
+
+        $this->manager->removeLocale($request->remove_locale);
+
+        return ['status' => 'ok'];
     }
 }
