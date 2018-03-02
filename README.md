@@ -92,6 +92,24 @@ This will extend the Translator and will create a new database entry, whenever a
 This way it shows up in the webinterface and can be edited and later exported.
 You shouldn't use this in production, just in development to translate your views, then just switch back.
 
+Autoloading
+-------------
+
+By default the module classes are not loaded automatically. You can autoload your modules using `psr-4`. For example:
+
+``` json
+{
+  "autoload": {
+    "psr-4": {
+      "App\\": "app/",
+      "Modules\\": "Modules/"
+    }
+  }
+}
+```
+
+**Tip: don't forget to run `composer dump-autoload` afterwards.**
+
 Other
 ------------
 `Laravel-IDE Admin` based on following plugins or services:
