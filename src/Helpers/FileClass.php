@@ -31,7 +31,7 @@ class FileClass
         return file_get_contents($file);
     }
 
-    public static function save($drive, $file, $value, $dump=true, $mode="w"){
+    public static function save($drive, $file, $value, $dump=false, $mode="w"){
         $relPath = call_user_func($drive, $file);
         if($dump && is_file($relPath)) self::dump($drive, $file);
         $fp = fopen($relPath, $mode);

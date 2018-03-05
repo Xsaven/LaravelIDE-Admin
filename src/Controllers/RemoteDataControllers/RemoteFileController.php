@@ -70,6 +70,11 @@ class RemoteFileController extends Controller{
 
     public function update(Request $request)
     {
+        if($request->saveFile && is_file(base_path($request->saveFile))){
+            \Help\FileClass::save('base_path', $request->saveFile, $request->saveValue);
+            return response(['status' => 'ok']);
+        }
+
         if($request->action && $request->action=='rename'){
             if($request->target!=$request->source)
                 return response($this->api->rename($request->source, $request->target));

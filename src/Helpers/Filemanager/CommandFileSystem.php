@@ -11,11 +11,11 @@ class CommandFileSystem implements iFileSystem{
 		"xsl" 	=> "excel",
 		"xslx" 	=> "excel",
 		"txt"	=> "text", "md"=>"text",
-		"html"	=> "code", "js"=>"code", "json"=>"code", "css"=>"code", "php"=>"code", "htm"=>"code", "xml"=>"code", "htaccess"=>"code",
+		"html"	=> "code", "js"=>"code", "json"=>"code", "css"=>"code", "php"=>"code", "htm"=>"code", "xml"=>"code", "htaccess"=>"code", "svg" => "code",
 		"mpg"	=> "video", "mp4"=>"video","avi"=>"video","mkv"=>"video",
 		"png"	=> "image", "jpg"=>"image", "gif"=>"image", "jpeg"=>"image", "ico" => "image",
 		"mp3"	=> "audio", "ogg"=>"audio",
-		"zip"	=> "archive", "rar"=>"archive", "7z"=>"archive", "tar"=>"archive", "gz"=>"archive"
+		"zip"	=> "archive", "rar"=>"archive", "7z"=>"archive", "tar"=>"archive", "gz"=>"archive", "tgz"=>"archive"
 	);
 
 	private $top;
