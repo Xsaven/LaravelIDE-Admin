@@ -19,6 +19,8 @@ class HomeController extends Controller
         Admin::css(asset('vendor/lia/css/goldenlayout/goldenlayout-base.css'));
         Admin::css(asset('vendor/lia/css/goldenlayout/goldenlayout-dark-theme.css'));
         Admin::adminVariables();
+        Admin::js(asset('vendor/lia/vs/loader.js'));
+        Admin::js(asset('vendor/lia/vs.init.js'));
         Admin::js(asset('vendor/lia/lia.js'));
         return view('lia::index');
     }

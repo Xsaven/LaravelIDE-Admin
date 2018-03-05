@@ -7,13 +7,13 @@ class CommandFileSystem implements iFileSystem{
 	public  $debug = false;
 	public $batchSeparator = ",";
 	public $extensions = array(
-		"docx" 	=> "doc",
+		"docx" 	=> "doc", "doc" => "doc",
 		"xsl" 	=> "excel",
 		"xslx" 	=> "excel",
 		"txt"	=> "text", "md"=>"text",
-		"html"	=> "code", "js"=>"code", "json"=>"code", "css"=>"code", "php"=>"code", "htm"=>"code",
+		"html"	=> "code", "js"=>"code", "json"=>"code", "css"=>"code", "php"=>"code", "htm"=>"code", "xml"=>"code", "htaccess"=>"code",
 		"mpg"	=> "video", "mp4"=>"video","avi"=>"video","mkv"=>"video",
-		"png"	=> "image", "jpg"=>"image", "gif"=>"image",
+		"png"	=> "image", "jpg"=>"image", "gif"=>"image", "jpeg"=>"image", "ico" => "image",
 		"mp3"	=> "audio", "ogg"=>"audio",
 		"zip"	=> "archive", "rar"=>"archive", "7z"=>"archive", "tar"=>"archive", "gz"=>"archive"
 	);
