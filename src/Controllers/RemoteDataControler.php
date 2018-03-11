@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class RemoteDataControler extends Controller
 {
+    public function post($name, $method, Request $request)
+    {
+        $name = ucfirst($name);
+        $call = eval("return new \Lia\Controllers\RemoteDataControllers\Remote{$name}Controller();");
+        return $call->{$method}($request, $name);
+    }
 
     public function get($name, Request $request)
     {

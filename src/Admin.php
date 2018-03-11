@@ -173,6 +173,7 @@ EOT;
             $router->get('auth/logout', 'AuthController@getLogout')->name('admin.login.logout');
 
             $router->group(['prefix' => 'remote', 'as' => 'remote.'], function () {
+                Route::match(['post'], '/post/{name}/{method}', 'RemoteDataControler@post')->name('post');
                 Route::match(['get'], '/get/{name}', 'RemoteDataControler@get')->name('get');
                 Route::match(['get'], '/select/{name}', 'RemoteDataControler@select')->name('select');
                 Route::match(['post'], '/insert/{name}', 'RemoteDataControler@insert')->name('insert');
@@ -180,7 +181,7 @@ EOT;
                 Route::match(['delete'], '/delete/{name}', 'RemoteDataControler@delete')->name('delete');
             });
 
-            $router->group(['prefix' => 'filemanager', 'as' => 'fmanager.'], function () {
+            /*$router->group(['prefix' => 'filemanager', 'as' => 'fmanager.'], function () {
                 Route::match(['get'], '/', 'FilemanagerController@index')->name('index');
                 Route::match(['post'], '/branch', 'FilemanagerController@branch')->name('branch');
                 Route::match(['post'], '/search', 'FilemanagerController@search')->name('search');
@@ -191,7 +192,7 @@ EOT;
                 Route::match(['post'], '/remove', 'FilemanagerController@remove')->name('remove');
                 Route::match(['post'], '/rename', 'FilemanagerController@rename')->name('rename');
                 Route::match(['post'], '/create', 'FilemanagerController@create')->name('create');
-            });
+            });*/
 
             $router->group(['prefix' => 'terminal', 'as' => 'terminal.'], function(){
                 Route::get('/', 'TerminalController@index')->name('index');

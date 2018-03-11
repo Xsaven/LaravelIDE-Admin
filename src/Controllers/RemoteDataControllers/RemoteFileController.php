@@ -42,7 +42,7 @@ class RemoteFileController extends Controller{
                 'value' => '..',
                 'select' => $request->source
             ]];
-            $files = array_merge($add, $files);
+            if(!$request->see) $files = array_merge($add, $files);
         }
         foreach ($data[0]['data'] as $file){
             $file['icon'] = $this->setIcon($file['type']);
@@ -70,8 +70,51 @@ class RemoteFileController extends Controller{
 
     public function update(Request $request)
     {
+
+        if($request->action && $request->action=='upload') {
+            $result = $this->api->upload(
+                $request->target,
+                $_FILES['upload']['name'],
+                $_FILES['upload']['tmp_name']);
+
+            return response($result);
+        }
+
         if($request->saveFile && is_file(base_path($request->saveFile))){
             \Help\FileClass::save('base_path', $request->saveFile, $request->saveValue);
+            return response(['status' => 'ok']);
+        }
+
+        if($request->action && $request->action=='new_file'){
+            if(is_file(base_path($request->target.'/'.$request->source))) $source = str_replace(['-',' ',':'],['_','_',''],now()).'_'.$request->source;
+            else $source = $request->source;
+            \Help\FileClass::save('base_path', $request->target.'/'.$source, '');
+            return response(['status' => 'ok']);
+        }
+
+        if($request->action && $request->action=='new_folder'){
+            $this->api->mkdir($request->source, $request->target);
+            return response(['status' => 'ok']);
+        }
+
+        if($request->action && $request->action=='remove'){
+            foreach (explode(',', $request->source) as $source) {
+                if(is_file(base_path($source)) || is_dir(base_path($source))) $this->api->batch($source, array($this->api, "rm"));
+            }
+            return response(['status' => 'ok']);
+        }
+
+        if($request->action && $request->action=='copy'){
+            foreach (explode(',', $request->source) as $source) {
+                if(is_file(base_path($source)) || is_dir(base_path($source))) $this->api->batch($source, array($this->api, "cp"), $request->target);
+            }
+            return response(['status' => 'ok']);
+        }
+
+        if($request->action && $request->action=='move'){
+            foreach (explode(',', $request->source) as $source) {
+                if(is_file(base_path($source)) || is_dir(base_path($source))) $this->api->batch($source, array($this->api, "mv"), $request->target);
+            }
             return response(['status' => 'ok']);
         }
 
