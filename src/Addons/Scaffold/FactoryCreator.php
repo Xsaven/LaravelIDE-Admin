@@ -162,7 +162,7 @@ class FactoryCreator
         if($softDeletes)
             $array[] = "\"deleted_at\" => NULL";
 
-        if(count($array)) $array = trim(implode(str_repeat(' ', 6), $array), "\n");
+        if(count($array)) $array = trim(implode(",\n".str_repeat(' ', 6), $array), "\n");//implode(",\n", $array);
         else $array = "";
 
         $stub = str_replace('DummyFakerArray', $array, $stub);

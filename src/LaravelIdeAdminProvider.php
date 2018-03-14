@@ -57,6 +57,8 @@ class LaravelIdeAdminProvider extends ServiceProvider
 
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'lia');
 
+        $this->loadRoutesFrom(__DIR__ . '/routes.php');
+
         if (file_exists($routes = admin_path('routes.php'))) {
             $this->loadRoutesFrom($routes);
         }

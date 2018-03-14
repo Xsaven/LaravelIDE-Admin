@@ -3,7 +3,7 @@
     "description": "Laravel-IDE Admin Manager.",
     "keywords": ["laravel", "ide", "admin", "manager", "xsaven"],
     "license": "MIT",
-    "version": "1.0.9",
+    "version": "1.0.14",
     "type": "project",
     "authors": [
         {
@@ -24,11 +24,7 @@
         "illuminate/view": "^5.1",
         "symfony/finder": "^2.7|^3.0|^4.0",
         "webmozart/glob": "^4.1",
-        "guzzlehttp/guzzle": "~6.0",
-        "nwidart/laravel-modules": "^3.0",
-        "barryvdh/laravel-ide-helper": "*",
-        "doctrine/dbal": "*",
-        "tarampampam/laravel-ide-helper": "^1.0.8"
+        "guzzlehttp/guzzle": "~6.0"
     },
     "autoload": {
         "psr-4": {
@@ -44,14 +40,13 @@
         "laravel": {
             "providers": [
                 "Lia\\LaravelIdeAdminProvider",
-                "Lia\\Addons\\TranslationManager\\ManagerServiceProvider"
+                "Lia\\Addons\\TranslationManager\\ManagerServiceProvider",
+                "Lia\\Addons\\Modules\\LaravelModulesServiceProvider"
             ],
             "aliases": {
-                "Admin": "Lia\\Facades\\Admin"
-            },
-            "dont-discover": [
-                "barryvdh/laravel-ide-helper"
-            ]
+                "Admin": "Lia\\Facades\\Admin",
+                "Module": "Nwidart\\Modules\\Facades\\Module"
+            }
         }
     }
 }
