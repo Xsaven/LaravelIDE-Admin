@@ -7,6 +7,14 @@ $attributes = [
 ];
 
 Route::group($attributes, function ($router) {
+
+    $router->group(['prefix' => 'module', 'as' => 'mod.', 'namespace' => 'ModulesControllers'], function () {
+        Route::get('list', 'ListController@index')->name('list');
+        Route::post('list', 'ListController@create')->name('list.create');
+        Route::post('cmd', 'ListController@cmd')->name('list.cmd');
+        Route::match(['post','get'], 'ide', 'IdeController@cmd')->name('ide.cmd');
+    });
+
     $router->group(['prefix' => 'remote', 'as' => 'remote.'], function () {
         Route::match(['post'], '/post/{name}/{method}', 'RemoteDataControler@post')->name('post');
         Route::match(['get'], '/get/{name}', 'RemoteDataControler@get')->name('get');

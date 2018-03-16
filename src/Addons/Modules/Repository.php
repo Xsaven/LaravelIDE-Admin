@@ -68,6 +68,11 @@ abstract class Repository implements RepositoryInterface, Countable
         return $this;
     }
 
+    public function getApp()
+    {
+        return $this->app;
+    }
+
     /**
      * Get all additional paths.
      *

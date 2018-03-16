@@ -30,6 +30,11 @@ class ModuleMakeCommand extends Command
     {
         $names = $this->argument('name');
 
+        //dd($this->laravel['config']);
+        //info($this->laravel['modules']);
+        //die;
+
+
         foreach ($names as $name) {
             with(new ModuleGenerator($name))
                 ->setFilesystem($this->laravel['files'])

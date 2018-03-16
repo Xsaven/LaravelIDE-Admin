@@ -1,7 +1,7 @@
 {
     "name": "$STUDLY_NAME$",
     "alias": "$LOWER_NAME$",
-    "description": "",
+    "description": "$STUDLY_DESCRIPTION$",
     "keywords": [],
     "active": 1,
     "order": 0,
