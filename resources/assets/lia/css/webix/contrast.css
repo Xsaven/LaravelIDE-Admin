@@ -1,7 +1,7 @@
 /*
 @license
 webix UI v.5.1.1
-This software is allowed to use under GPL or you need to obtain Commercial License 
+This software is allowed to use under GPL or you need to obtain Commercial License
  to use it in non-GPL project. Please contact sales@webix.com for details
 */
 .webix_view{font-family:'PT Sans',Tahoma;font-size:15px;color:#fff;-webkit-font-smoothing:antialiased;cursor:default;overflow:hidden;border:0 solid #818181;background-color:#393939;white-space:normal;-webkit-appearance:none}
@@ -12,7 +12,7 @@ body{-webkit-tap-highlight-color:transparent!important}
 .webix_layout_space,.webix_layout_wide{background-color:#818181}
 .webix_layout_accordion,.webix_layout_clean,.webix_layout_line,.webix_multiview{}
 .webix_overlay{width:100%;height:100%;position:absolute;z-index:10;text-align:center;padding-top:10px}
-.webix_view>.webix_disabled{width:100%;height:100%;position:absolute;top:0;left:0;background-color:#ddd;opacity:.4;filter:alpha(opacity=40);z-index:1}
+.webix_view>.webix_disabled{/*width:100%;height:100%;*/position:absolute;top:0;left:0;background-color:#ddd;opacity:.4;filter:alpha(opacity=40);z-index:1}
 .webix_disabled_view{overflow:hidden!important}
 body.webix_full_screen{margin:0;padding:0;overflow:hidden}
 .webix_noselect,.webix_noselect div{-moz-user-select:none;-webkit-user-select:none;-ms-user-select:none;user-select:none}

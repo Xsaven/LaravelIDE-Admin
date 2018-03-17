@@ -14,7 +14,8 @@
             ],
             "aliases": {
                 
-            }
+            },
+            "module-dir": "$STUDLY_NAME$"
         }
     },
     "autoload": {

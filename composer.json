@@ -3,7 +3,7 @@
     "description": "Laravel-IDE Admin Manager.",
     "keywords": ["laravel", "ide", "admin", "manager", "xsaven"],
     "license": "MIT",
-    "version": "1.0.14",
+    "version": "1.0.15",
     "type": "project",
     "authors": [
         {
@@ -24,7 +24,8 @@
         "illuminate/view": "^5.1",
         "symfony/finder": "^2.7|^3.0|^4.0",
         "webmozart/glob": "^4.1",
-        "guzzlehttp/guzzle": "~6.0"
+        "guzzlehttp/guzzle": "~6.0",
+        "composer-plugin-api": "^1.1"
     },
     "autoload": {
         "psr-4": {
@@ -37,6 +38,7 @@
     },
     "prefer-stable": true,
     "extra": {
+        "class": ":Lia\\Addons\\Modules\\LaravelModuleInstallerPlugin",
         "laravel": {
             "providers": [
                 "Lia\\LaravelIdeAdminProvider",
