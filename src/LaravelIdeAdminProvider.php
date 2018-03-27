@@ -26,6 +26,7 @@ class LaravelIdeAdminProvider extends ServiceProvider
      */
     protected $routeMiddleware = [
         'admin.auth'       => \Lia\Middleware\Authenticate::class,
+        'admin.pjax'       => \Lia\Middleware\Pjax::class,
         'admin.log'        => \Lia\Middleware\LogOperation::class,
         'admin.permission' => \Lia\Middleware\Permission::class,
         'admin.bootstrap'  => \Lia\Middleware\Bootstrap::class

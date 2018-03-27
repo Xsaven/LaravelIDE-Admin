@@ -139,8 +139,8 @@ class Scheduling
     {
         parent::routes(function ($router) {
             /* @var \Illuminate\Routing\Router $router */
-            $router->get('scheduling', 'Encore\Admin\Scheduling\SchedulingController@index')->name('scheduling-index');
-            $router->post('scheduling/run', 'Encore\Admin\Scheduling\SchedulingController@runEvent')->name('scheduling-run');
+            $router->get('scheduling', 'Lia\Scheduling\SchedulingController@index')->name('scheduling-index');
+            $router->post('scheduling/run', 'Lia\Scheduling\SchedulingController@runEvent')->name('scheduling-run');
         });
     }
 

@@ -15,4 +15,6 @@
 <div id="layoutContainer"></div>
 </body>
 {!! Admin::js() !!}
+<script src="{{asset('vendor/lia/vs/loader.js')}}"></script>
+<script src="{{asset('vendor/lia/vs.init.js')}}"></script>
 </html>

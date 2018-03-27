@@ -9,19 +9,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        Admin::css(asset('vendor/lia/css/nprogress/nprogress.css'));
-        Admin::css(asset('vendor/lia/css/terminal/terminal.css'));
-        Admin::css(asset('vendor/lia/css/filemanager/filemanager.css'));
-        Admin::css(asset('vendor/lia/css/webix/contrast.css'));
-        Admin::css(asset('vendor/lia/css/bootstrap/css/bootstrap.min.css'));
-        Admin::css(asset('vendor/lia/css/layout.css'));
-        Admin::css(asset('vendor/lia/css/dock-manager.css'));
-        Admin::css(asset('vendor/lia/css/AdminLTE.min.css'));
-        Admin::css(asset('vendor/lia/css/goldenlayout/goldenlayout-base.css'));
-        Admin::css(asset('vendor/lia/css/goldenlayout/goldenlayout-dark-theme.css'));
         Admin::adminVariables();
-        Admin::js(asset('vendor/lia/vs/loader.js'));
-        Admin::js(asset('vendor/lia/vs.init.js'));
         Admin::js(asset('vendor/lia/lia.js'));
         return view('lia::index');
     }

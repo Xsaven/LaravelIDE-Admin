@@ -90,10 +90,7 @@ class ModelCreator
     public function getPath($name)
     {
         $segments = explode('\\', $name);
-
-        array_shift($segments);
-
-        return app_path(implode('/', $segments)).'.php';
+        return base_path(implode('/', $segments)).'.php';
     }
 
     /**

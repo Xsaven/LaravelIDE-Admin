@@ -34,13 +34,15 @@ class FactoryCreator
      * @param string $name
      * @param null   $files
      */
-    public function __construct($tableName, $name, $files = null)
+    public function __construct($tableName, $name, $path=false)
     {
         $this->tableName = $tableName;
 
         $this->name = $name;
 
-        $this->files = $files ?: app('files');
+        $this->path = $path;
+
+        $this->files = app('files');
     }
 
     /**
@@ -86,8 +88,11 @@ class FactoryCreator
         $segments = explode('\\', $name);
 
         array_shift($segments);
+        if($this->path)
+            return $this->path.'/'.ucfirst(array_last($segments)).'Factory.php';
+        else
+            return database_path('factories/'.ucfirst(array_last($segments))).'Factory.php';
 
-        return database_path('factories/'.ucfirst(array_last($segments))).'Factory.php';
     }
 
     /**
@@ -149,10 +154,12 @@ class FactoryCreator
         $array = [];
 
         foreach ($fields as $f){
-            if(!empty($f['fakerGroup']) && !empty($f['fakerFunction'])){
-                $modifier = !empty($f['fakerModifier']) ? "{$f['fakerModifier']}()->":"";
+            if(!empty($f['fakerFunction']) || !empty($f['fkey'])){
                 $params = !empty($f['fakerFunctionParams']) ? "({$f['fakerFunctionParams']})":"";
-                $array[] = "\"{$f['name']}\" => \$faker->{$modifier}{$f['fakerFunction']}{$params}";
+                if(!empty($f['fkey']))
+                    $array[] = "\"{$f['name']}\" => \"{$f['fkey_data']['faker']}\"";
+                else
+                    $array[] = "\"{$f['name']}\" => \$faker->{$f['fakerFunction']}{$params}";
             }
         }
         if($timestamps){
@@ -162,7 +169,7 @@ class FactoryCreator
         if($softDeletes)
             $array[] = "\"deleted_at\" => NULL";
 
-        if(count($array)) $array = trim(implode(",\n".str_repeat(' ', 6), $array), "\n");//implode(",\n", $array);
+        if(count($array)) $array = trim(implode(",\n".str_repeat(' ', 8), $array), "\n");//implode(",\n", $array);
         else $array = "";
 
         $stub = str_replace('DummyFakerArray', $array, $stub);

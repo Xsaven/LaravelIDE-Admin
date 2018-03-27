@@ -4,12 +4,12 @@ namespace DummyNamespace;
 
 use DummyModelNamespace;
 
-use Encore\Admin\Form;
-use Encore\Admin\Grid;
-use Encore\Admin\Facades\Admin;
-use Encore\Admin\Layout\Content;
+use Lia\Form;
+use Lia\Grid;
+use Lia\Facades\Admin;
+use Lia\Layout\Content;
 use App\Http\Controllers\Controller;
-use Encore\Admin\Controllers\ModelForm;
+use Lia\Controllers\ModelForm;
 
 class DummyClass extends Controller
 {

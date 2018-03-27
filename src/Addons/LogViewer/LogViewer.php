@@ -4,7 +4,7 @@ namespace Lia\Addons\LogViewer;
 
 /**
  * Class LogViewer
- * @package Encore\Admin\LogViewer
+ * @package Lia\Admin\LogViewer
  */
 class LogViewer
 {

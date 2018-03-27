@@ -18,7 +18,7 @@
             </a>
             <ul>
                 @foreach($item['children'] as $item)
-                    @include('admin::partials.menu', $item)
+                    @include('lia::partials.menu', $item)
                 @endforeach
             </ul>
         </li>

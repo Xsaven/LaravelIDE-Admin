@@ -218,7 +218,7 @@ div.webix_modal_cover{background-color:#000;cursor:default;filter:alpha(opacity=
 .webix_dd_drag_column{padding:5px 10px}
 .webix_column>.webix_drag_over.webix_cell{color:#fff}
 .webix_ss_header table,.webix_ss_header td{padding:0;margin:0}
-.webix_cell.webix_invalid,.webix_column>.webix_cell.webix_invalid:nth-child(even){background-color:#fee}
+.webix_cell.webix_invalid,.webix_column>.webix_cell.webix_invalid:nth-child(even){background-color:#7d2929}
 .webix_invalid_cell{position:relative}
 .webix_invalid_cell:after{content:"";position:absolute;top:0;right:0;width:0;height:1px;border-top:8px solid #f44;border-left:8px solid transparent}
 .webix_column>div.webix_cell_select,.webix_column>div.webix_column_select,.webix_column>div.webix_row_select{color:#fff;background:#1f884c}

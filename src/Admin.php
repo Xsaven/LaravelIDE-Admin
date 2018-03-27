@@ -2,6 +2,11 @@
 
 namespace Lia;
 
+use Closure;
+use Lia\Auth\Database\Menu;
+use Lia\Layout\Content;
+use Lia\Widgets\Navbar;
+
 use Illuminate\Database\Eloquent\Model as EloquentModel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
@@ -37,6 +42,50 @@ class Admin
 
     /**
      * @param $model
+     * @param Closure $callable
+     *
+     * @return \Lia\Grid
+     */
+    public function grid($model, Closure $callable)
+    {
+        return new Grid($this->getModel($model), $callable);
+    }
+
+    /**
+     * @param $model
+     * @param Closure $callable
+     *
+     * @return \Lia\Form
+     */
+    public function form($model, Closure $callable)
+    {
+        return new Form($this->getModel($model), $callable);
+    }
+
+    /**
+     * Build a tree.
+     *
+     * @param $model
+     *
+     * @return \Lia\Tree
+     */
+    public function tree($model, Closure $callable = null)
+    {
+        return new Tree($this->getModel($model), $callable);
+    }
+
+    /**
+     * @param Closure $callable
+     *
+     * @return \Lia\Layout\Content
+     */
+    public function content(Closure $callable = null)
+    {
+        return new Content($callable);
+    }
+
+    /**
+     * @param $model
      *
      * @return mixed
      */
@@ -68,6 +117,10 @@ class Admin
             return;
         }
 
+        $css = array_get(Form::collectFieldAssets(), 'css', []);
+
+        static::$css = array_merge(static::$css, $css);
+
         return view('lia::partials.css', ['css' => array_unique(static::$css)]);
     }
 
@@ -85,6 +138,10 @@ class Admin
 
             return;
         }
+
+        $js = array_get(Form::collectFieldAssets(), 'js', []);
+
+        static::$js = array_merge(static::$js, $js);
 
         return view('lia::partials.js', ['js' => array_unique(static::$js)]);
     }
@@ -126,6 +183,20 @@ class Admin
     }
 
     public function adminVariables(){
+        Admin::css(asset('vendor/lia/css/nprogress/nprogress.css'));
+        Admin::css(asset('vendor/lia/css/terminal/terminal.css'));
+        Admin::css(asset('vendor/lia/css/filemanager/filemanager.css'));
+        Admin::css(asset('vendor/lia/css/webix/contrast.css'));
+        Admin::css(asset('vendor/lia/css/bootstrap/css/bootstrap.min.css'));
+        Admin::css(asset('vendor/lia/css/layout.css'));
+        Admin::css(asset('vendor/lia/css/AdminLTE.min.css'));
+        Admin::css(asset('vendor/lia/css/goldenlayout/goldenlayout-base.css'));
+        Admin::css(asset('vendor/lia/css/goldenlayout/goldenlayout-dark-theme.css'));
+
+        Admin::css(asset('vendor/lia/css/loadl.css'));
+
+        Admin::js(asset('vendor/lia/AdminLTE/plugins/jQuery/jQuery-2.1.4.min.js'));
+
         $routeCollection = \Route::getRoutes(); $routes = []; foreach ($routeCollection as $value) { if(!empty($value->getName())) $routes[$value->getName()] = str_replace('?','',$value->uri()); }
         $routes = json_encode($routes);
         $prefix = config('lia.route.prefix');

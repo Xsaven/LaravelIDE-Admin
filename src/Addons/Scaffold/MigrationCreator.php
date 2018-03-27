@@ -81,11 +81,12 @@ class MigrationCreator extends BaseMigrationCreator
         foreach ($fields as $field) {
             $column = "\$table->{$field['type']}('{$field['name']}')";
 
+            if(!empty($field['fkey'])) $field['key'] = 'unsigned';
             if ($field['key']) {
                 $column .= "->{$field['key']}()";
             }
 
-            if (isset($field['default']) && !empty($field['default'])) {
+            if (isset($field['default']) && !empty($field['default']) && $field['nullable'] != '1') {
                 $column .= "->default('{$field['default']}')";
             }
 
@@ -93,11 +94,21 @@ class MigrationCreator extends BaseMigrationCreator
                 $column .= "->comment('{$field['comment']}')";
             }
 
-            if (array_get($field, 'nullable') == '1') {
+            if ($field['nullable'] == '1') {
                 $column .= '->nullable()';
             }
 
             $rows[] = $column.";\n";
+
+            if(!empty($field['fkey'])){
+                $foreign = "\$table->foreign('{$field['name']}')->references('{$field['fkey_data']['references']}')->on('{$field['fkey_data']['on']}')";
+                $onUpdate = strtolower($field['fkey_data']['onUpdate']);
+                $onDelete = strtolower($field['fkey_data']['onDelete']);
+                if(!empty($field['fkey_data']['onUpdate'])) $foreign .= "->onUpdate('{$onUpdate}')";
+                if(!empty($field['fkey_data']['onDelete'])) $foreign .= "->onDelete('{$onDelete}')";
+                $rows[] = $foreign.";\n";
+            }
+
         }
 
         if ($useTimestamps) {

@@ -2,8 +2,8 @@
 
 namespace Lia\Auth;
 
-use Encore\Admin\Facades\Admin;
-use Encore\Admin\Middleware\Pjax;
+use Lia\Facades\Admin;
+use Lia\Middleware\Pjax;
 use Illuminate\Support\Facades\Auth;
 
 class Permission
