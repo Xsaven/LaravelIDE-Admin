@@ -54,7 +54,7 @@ class ModelCreator
      *
      * @return string
      */
-    public function create($keyName = 'id', $timestamps = true, $softDeletes = false, $fields=[])
+    public function create($keyName = 'id', $route_key_name = 'id', $timestamps = true, $softDeletes = false, $fields=[])
     {
         $path = $this->getpath($this->name);
 
@@ -73,6 +73,7 @@ class ModelCreator
             ->replaceFillable($stub, $fields)
             ->replaceGuarded($stub, $fields)
             ->replaceCasts($stub, $fields)
+            ->replaceRouteKeyName($stub, $route_key_name)
             ->replaceSpace($stub);
 
         $this->files->put($path, $stub);
@@ -275,6 +276,27 @@ class ModelCreator
         else $casts = "";
 
         $stub = str_replace('DummyCasts', $casts, $stub);
+
+        return $this;
+    }
+
+    /**
+     * Replace RouteKeyName dummy.
+     *
+     * @param string $stub
+     * @param array  $fields
+     *
+     * @return $this
+     */
+    protected function replaceRouteKeyName(&$stub, $route_key_name){
+
+        if($route_key_name=='id')
+            $replace = "";
+        else{
+            $replace = "public function getRouteKeyName(){ return \"{$route_key_name}\"; }";
+        }
+
+        $stub = str_replace('DummyRouteKeyName', $replace, $stub);
 
         return $this;
     }

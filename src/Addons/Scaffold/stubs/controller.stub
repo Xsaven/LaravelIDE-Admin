@@ -24,8 +24,8 @@ class DummyClass extends Controller
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('header');
-            $content->description('description');
+            $content->header('DummyHeader');
+            $content->description('list');
 
             $content->body($this->grid());
         });
@@ -41,10 +41,10 @@ class DummyClass extends Controller
     {
         return Admin::content(function (Content $content) use ($id) {
 
-            $content->header('header');
-            $content->description('description');
+            $content->header('DummyHeader');
+            $content->description('edit');
 
-            $content->body($this->form()->edit($id));
+            $content->body($this->form($id)->edit($id));
         });
     }
 
@@ -57,8 +57,8 @@ class DummyClass extends Controller
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('header');
-            $content->description('description');
+            $content->header('DummyHeader');
+            $content->description('create');
 
             $content->body($this->form());
         });
@@ -73,10 +73,9 @@ class DummyClass extends Controller
     {
         return Admin::grid(DummyModel::class, function (Grid $grid) {
 
-            $grid->id('ID')->sortable();
-
-            $grid->created_at();
-            $grid->updated_at();
+DummyDisabled
+DummyGridFields
+DummyTimestamps
         });
     }
 
@@ -85,12 +84,12 @@ class DummyClass extends Controller
      *
      * @return Form
      */
-    protected function form()
+    protected function form($id=false)
     {
-        return Admin::form(DummyModel::class, function (Form $form) {
+        return Admin::form(DummyModel::class, function (Form $form) use ($id) {
 
             $form->display('id', 'ID');
-
+DummyFormFields
             $form->display('created_at', 'Created At');
             $form->display('updated_at', 'Updated At');
         });

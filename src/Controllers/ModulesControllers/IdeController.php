@@ -51,6 +51,7 @@ class IdeController {
 
                 $paths['model'] = $modelCreator->create(
                     $request->primary_key,
+                    $request->route_key_name,
                     $request->timestamps == '1',
                     $request->soft_deletes == '1',
                     json_decode($request->fields, true)
@@ -85,7 +86,7 @@ class IdeController {
             // 5. Create controller.
             if (isset($request->create['controller']) && $request->create['controller']=='1') {
                 $paths['controller'] = (new ControllerCreator($request->controller_name))
-                    ->create($model_name);
+                    ->create($model_name, $request);
             }
         } catch (\Exception $exception) {
             app('files')->delete($paths);

@@ -192,10 +192,12 @@ class Admin
         Admin::css(asset('vendor/lia/css/AdminLTE.min.css'));
         Admin::css(asset('vendor/lia/css/goldenlayout/goldenlayout-base.css'));
         Admin::css(asset('vendor/lia/css/goldenlayout/goldenlayout-dark-theme.css'));
+        Admin::css(asset('vendor/lia/bootstrap3-editable/css/bootstrap-editable.css'));
 
         Admin::css(asset('vendor/lia/css/loadl.css'));
 
         Admin::js(asset('vendor/lia/AdminLTE/plugins/jQuery/jQuery-2.1.4.min.js'));
+        Admin::js(asset('vendor/lia/AdminLTE/bootstrap/js/bootstrap.min.js'));
 
         $routeCollection = \Route::getRoutes(); $routes = []; foreach ($routeCollection as $value) { if(!empty($value->getName())) $routes[$value->getName()] = str_replace('?','',$value->uri()); }
         $routes = json_encode($routes);

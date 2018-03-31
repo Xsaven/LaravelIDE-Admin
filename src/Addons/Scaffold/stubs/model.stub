@@ -20,4 +20,6 @@ class DummyClass extends Model
     DummyCasts
 
     DummyTimestamp
+
+    DummyRouteKeyName
 }

@@ -365,7 +365,6 @@ class Form
         admin_toastr(trans('admin.save_succeeded'));
 
         $url = Input::get(Builder::PREVIOUS_URL_KEY) ?: $this->resource(0);
-
         return redirect($url);
     }
 
@@ -523,7 +522,8 @@ class Form
         // Handle validation errors.
         if ($validationMessages = $this->validationMessages($data)) {
             if (!$isEditable) {
-                return back()->withInput()->withErrors($validationMessages);
+                $name = str_replace('update','edit',\Route::currentRouteName());
+                return redirect()->route($name, [explode('.', $name)[0] => $id])->withInput()->withErrors($validationMessages);
             } else {
                 return response()->json(['errors' => array_dot($validationMessages->getMessages())], 422);
             }

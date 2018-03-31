@@ -15,6 +15,12 @@
 <div id="layoutContainer"></div>
 </body>
 {!! Admin::js() !!}
+<script src="{{asset('vendor/lia/bootstrap3-editable/js/bootstrap-editable.min.js')}}"></script>
+<script>
+    $.fn.editable.defaults.params = function (params) {params._token = LA.token;params._editable = 1;params._method = 'PUT';return params;};
+    $.noConflict();
+</script>
 <script src="{{asset('vendor/lia/vs/loader.js')}}"></script>
+<script src="{{asset('vendor/lia/vs.init.js')}}"></script>
 <script src="{{asset('vendor/lia/vs.init.js')}}"></script>
 </html>
